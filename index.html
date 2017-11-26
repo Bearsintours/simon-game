@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="data.js">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <title>Simon game</title>
+</head>
+
+<body>
+  <div class="container">
+    <div id="game">
+      <div class="top-row row">
+        <div id="green-pad" class="pad"></div>
+        <div id="red-pad" class="pad"></div>
+      </div>
+      <div class="bottom-row row">
+        <div id="yellow-pad" class="pad"></div>
+        <div id="blue-pad" class="pad"></div>
+      </div>
+      <div id="controls">
+        <h1>Simon <span>&copy</span></h1>
+        <div id="buttons">
+          <div id="count" class="aligned">
+            <div id="screen">--</div>
+          </div>
+          <div id="start" class="aligned btn">
+            <div id="start-btn"></div>
+            <div class="label">START</div>
+          </div>
+          <div id="mode" class="aligned btn">
+            <div id="led"></div>
+            <div id="mode-btn"></div>
+            <div class="label">STRICT</div>
+          </div>
+        </div>
+        <div id="toggle">
+          <h5>OFF</h5>
+          <div id="switch">
+            <div id="switch-btn">
+            </div>
+          </div>
+          <h5>ON</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
