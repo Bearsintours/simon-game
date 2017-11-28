@@ -26,7 +26,7 @@
         <h1>Simon <span>&copy</span></h1>
         <div id="buttons">
           <div id="count" class="aligned">
-            <div id="screen">--</div>
+            <div id="screen" class="hidden">--</div>
           </div>
           <div id="start" class="aligned btn">
             <div id="start-btn"></div>
@@ -40,10 +40,10 @@
         </div>
         <div id="toggle">
           <h5>OFF</h5>
-          <div id="switch">
-            <div id="switch-btn">
-            </div>
-          </div>
+          <label class="switch-btn">
+            <input type="checkbox" id="on-off-btn">
+            <div class="slide"></div>
+          </label>
           <h5>ON</h5>
         </div>
       </div>
