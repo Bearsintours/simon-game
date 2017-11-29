@@ -25,44 +25,59 @@ body {
   position: relative;
   width: 260px;
   height: 260px;
-  border: 1px solid green;
   border-top-left-radius: 100%;
-  background-color: green;
+  background-color: rgba(20, 205, 20, 0.8);
   top: 30px;
   right: 8px;
+}
+
+.green-pad-on {
+  background-color: rgba(20, 235, 20, 1);
+  ;
 }
 
 #red-pad {
   position: relative;
   width: 260px;
   height: 260px;
-  border: 1px solid red;
   border-top-right-radius: 100%;
-  background-color: red;
+  background-color: rgba(200, 0, 0, 0.9);
   top: 30px;
   left: 8px;
+}
+
+.red-pad-on {
+  background-color: rgba(255, 20, 0, 1);
 }
 
 #blue-pad {
   position: relative;
   width: 260px;
   height: 260px;
-  border: 1px solid blue;
   border-bottom-right-radius: 100%;
-  background-color: blue;
+  background-color: rgba(0, 0, 225, 0.9);
   top: 40px;
   left: 8px;
+}
+
+.blue-pad-on {
+  background-color: rgba(20, 50, 255, 1);
 }
 
 #yellow-pad {
   position: relative;
   width: 260px;
   height: 260px;
-  border: 1px solid yellow;
   border-bottom-left-radius: 100%;
-  background-color: yellow;
+  background-color: rgba(235, 235, 0, 0.9);
   right: 8px;
   top: 40px;
+  opacity: 0.8;
+}
+
+.yellow-pad-on {
+  background-color: rgba(255, 255, 0, 1);
+  opacity: 1;
 }
 
 #controls {
@@ -95,7 +110,7 @@ body {
 
 #buttons {
   text-align: center;
-  margin-top: 5%;
+  margin-top: 2%;
   margin-bottom: 10%;
   width: 100%;
 }
@@ -106,21 +121,28 @@ body {
 
 #count {
   border: 1px solid black;
-  height: 2em;
-  width: 2em;
-  padding-top: 2%;
+  height: 3em;
+  width: 3em;
   margin-left: 6%;
   margin-right: 10%;
   border-radius: 10%;
   background-color: rgb(30, 30, 30);
+}
+
+#screen {
   color: red;
   font-style: bold;
   font-size: 1.5em;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 #start-btn {
   background-color: red;
   vertical-align: middle;
+  cursor: pointer;
   height: 2em;
   width: 2em;
   margin-left: 15%;
@@ -132,15 +154,21 @@ body {
 }
 
 #led {
-  height: .5em;
-  width: .5em;
+  height: .4em;
+  width: .4em;
+  border: 1px solid black;
   border-radius: 100%;
   background-color: black;
   float: right;
 }
 
+.led-on {
+  background-color: red !important;
+}
+
 #mode-btn {
   display: inline-block;
+  cursor: pointer;
   background-color: yellow;
   vertical-align: middle;
   height: 2em;
@@ -163,16 +191,39 @@ body {
   vertical-align: top;
 }
 
-#switch {
-  height: 1.5em;
-  width: 4em;
-  background-color: black;
-  margin: auto;
+.switch-btn {
+  position: relative;
   display: inline-block;
+  width: 15%;
+  height: 100%;
 }
 
-#switch-btn {
-  background-color: blue;
-  height: 100%;
+.slide {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+}
+
+.slide:before {
+  position: absolute;
+  content: "";
+  height: 80%;
   width: 40%;
+  left: 1%;
+  bottom: 9%;
+  background-color: blue;
+  border: 1px solid black;
+  border-radius: 20%;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+input:checked+.slide:before {
+  -webkit-transform: translateX(1.38em);
+  -ms-transform: translateX(1.38em);
+  transform: translateX(1.38em);
 }
