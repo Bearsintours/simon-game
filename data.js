@@ -15,25 +15,49 @@ var computersMove, playersMove;
 var storeColors = [];
 var storePlayersMove = [];
 var movesPossible = [0, 1, 2, 3];
+var padColors = ["green", "blue", "red", "yellow"];
+var pads = document.getElementsByClassName("pads");
 var padsNumber = {
   0: "green",
   1: "red",
   2: "yellow",
   3: "blue"
 };
+var score = 0;
 
 
 switchBtn.addEventListener("click", function() {
-  on = true;
   screen.classList.toggle("hidden");
+  if (on == true) {
+    on = false;
+  } else on = true;
 });
 
+
 strictModeBtn.addEventListener("click", function() {
-  strictMode = true;
-  strictModeLed.classList.toggle("led-on");
+  if (on == true) {
+    strictMode = true;
+    strictModeLed.classList.toggle("led-on");
+  }
 })
 
+startBtn.addEventListener("click", function() {
+  if (on == true) {
+    var init = setTimeout(function() {
+      startNewGame();
+    }, 1000);
+  }
+})
+
+
 // Helper functions:
+
+function startNewGame() {
+  var storeColors = [];
+  var storePlayersMove = [];
+  getColor();
+}
+
 
 function getColor() {
   var randomNum = Math.floor(Math.random() * 4);
@@ -46,18 +70,21 @@ function getColor() {
   var stop = setTimeout(function() {
     pad.classList.remove(id + "-on");
   }, 1000);
+  score++;
+  screen.innerHTML = score;
   clickColor();
 }
 
 function clickColor() {
-  green.addEventListener("click", function() {
-    green.classList.add("green-on");
-    var stop = setTimeout(function() {
-      green.classList.remove("green-on")
-    }, 1000);
-  })
+  for (var i = 0; i < pads.length; i++) {
+    pads[i].addEventListener("click", function() {
+      var pad = this;
+      var id = this.id;
+      console.log(id);
+      this.classList.add(id + "-on");
+      var stop = setTimeout(function() {
+        pad.classList.remove(id + "-on")
+      }, 1000);
+    })
+  }
 }
-
-
-
-getColor();
