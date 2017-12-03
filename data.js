@@ -62,29 +62,50 @@ function startNewGame() {
 function getColor() {
   var randomNum = Math.floor(Math.random() * 4);
   var color = padsNumber[randomNum];
-  storeColors.push(color);
   var pad = document.getElementById(color);
   var id = pad.id;
-  console.log(id);
-  pad.classList.add(id + "-on");
-  var stop = setTimeout(function() {
-    pad.classList.remove(id + "-on");
-  }, 1000);
+  storeColors.push(id);
+  console.log(storeColors);
   score++;
   screen.innerHTML = score;
+  playStoredColors(storeColors);
   clickColor();
 }
+
 
 function clickColor() {
   for (var i = 0; i < pads.length; i++) {
     pads[i].addEventListener("click", function() {
       var pad = this;
       var id = this.id;
-      console.log(id);
+      storePlayersMove.push(id);
+      console.log(storePlayersMove);
       this.classList.add(id + "-on");
       var stop = setTimeout(function() {
         pad.classList.remove(id + "-on")
       }, 1000);
     })
   }
+}
+
+function playColor(color) {
+  var pad = document.getElementById(color);
+  var id = pad.id;
+  pad.classList.add(id + "-on");
+  var stop = setTimeout(function() {
+    pad.classList.remove(id + "-on");
+  }, 1000);
+}
+
+function playStoredColors(arr) {
+  var i = 0;
+
+  function print() {
+    playColor(arr[i]);
+    i++;
+    if (i < arr.length) {
+      setTimeout(print, 2000);
+    }
+  }
+  print();
 }
