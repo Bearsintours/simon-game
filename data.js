@@ -43,9 +43,7 @@ strictModeBtn.addEventListener("click", function() {
 
 startBtn.addEventListener("click", function() {
   if (on == true) {
-    var init = setTimeout(function() {
-      startNewGame();
-    }, 1000);
+    startNewGame();
   }
 })
 
@@ -53,9 +51,12 @@ startBtn.addEventListener("click", function() {
 // Helper functions:
 
 function startNewGame() {
-  var storeColors = [];
-  var storePlayersMove = [];
-  getColor();
+  var init = setTimeout(function() {
+    storeColors = [];
+    storePlayersMove = [];
+    score = 0;
+    getColor();
+  }, 2000);
 }
 
 
@@ -65,7 +66,7 @@ function getColor() {
   var pad = document.getElementById(color);
   var id = pad.id;
   storeColors.push(id);
-  console.log(storeColors);
+  console.log("Colors to play: " + storeColors);
   score++;
   screen.innerHTML = score;
   playStoredColors(storeColors);
@@ -76,15 +77,29 @@ function getColor() {
 function clickColor() {
   for (var i = 0; i < pads.length; i++) {
     pads[i].addEventListener("click", function() {
-      var pad = this;
-      var id = this.id;
-      storePlayersMove.push(id);
-      console.log(storePlayersMove);
-      this.classList.add(id + "-on");
-      var stop = setTimeout(function() {
-        pad.classList.remove(id + "-on")
-      }, 1000);
+      if (storePlayersMove.length < storeColors.length) {
+        var pad = this;
+        var id = this.id;
+        storePlayersMove.push(id);
+        console.log("Color played : " + storePlayersMove);
+        this.classList.add(id + "-on");
+        var stop = setTimeout(function() {
+          pad.classList.remove(id + "-on")
+        }, 1000);
+      }
     })
+  }
+}
+
+function check() {
+  for (var i = 0; i < storePlayersMove.length; i++) {
+    if (storePlayersMove[i] !== storeColors[i]) {
+      console.log("incorrect");
+      startNewGame();
+    }
+  }
+  if (storePlayersMove.length == storeColors.length) {
+    getColor();
   }
 }
 
@@ -108,4 +123,13 @@ function playStoredColors(arr) {
     }
   }
   print();
+}
+
+function checkColor() {
+  for (var i = 0; i < storeColors.length; i++) {
+    if (storeColors[i] !== storePlayersMove[i]) {
+      return false;
+    }
+  }
+  return true;
 }
