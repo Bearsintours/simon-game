@@ -24,20 +24,35 @@ var padsNumber = {
   3: "blue"
 };
 var score = 0;
+var index;
+var playersTurn = false;
 
 
 switchBtn.addEventListener("click", function() {
+  screen.innerHTML = "--";
   screen.classList.toggle("hidden");
   if (on == true) {
     on = false;
-  } else on = true;
+    strictMode = false;
+    strictModeLed.classList.remove("led-on");
+  } else {
+    on = true;
+    screen.innerHTML = "--";
+    score = 0;
+    storeColors = [];
+    storePlayersMove = [];
+  }
 });
 
 
 strictModeBtn.addEventListener("click", function() {
   if (on == true) {
-    strictMode = true;
     strictModeLed.classList.toggle("led-on");
+    if (strictMode == true) {
+      strictMode = false;
+    } else {
+      strictMode = true;
+    }
   }
 })
 
@@ -51,16 +66,15 @@ startBtn.addEventListener("click", function() {
 // Helper functions:
 
 function startNewGame() {
-  var init = setTimeout(function() {
-    storeColors = [];
-    storePlayersMove = [];
-    score = 0;
-    getColor();
-  }, 2000);
+  storeColors = [];
+  storePlayersMove = [];
+  score = 0;
+  getColor();
 }
 
 
 function getColor() {
+  playersTurn = false;
   var randomNum = Math.floor(Math.random() * 4);
   var color = padsNumber[randomNum];
   var pad = document.getElementById(color);
@@ -68,40 +82,36 @@ function getColor() {
   storeColors.push(id);
   console.log("Colors to play: " + storeColors);
   score++;
-  screen.innerHTML = score;
-  playStoredColors(storeColors);
+  var delay = setTimeout(function() {
+    playStoredColors(storeColors);
+    screen.innerHTML = score;
+  }, 1200)
   clickColor();
 }
 
 
 function clickColor() {
   for (var i = 0; i < pads.length; i++) {
-    pads[i].addEventListener("click", function() {
-      if (storePlayersMove.length < storeColors.length) {
-        var pad = this;
-        var id = this.id;
-        storePlayersMove.push(id);
-        console.log("Color played : " + storePlayersMove);
-        this.classList.add(id + "-on");
-        var stop = setTimeout(function() {
-          pad.classList.remove(id + "-on")
-        }, 1000);
-      }
-    })
+    pads[i].addEventListener("click", printColorClicked);
   }
 }
 
-function check() {
-  for (var i = 0; i < storePlayersMove.length; i++) {
-    if (storePlayersMove[i] !== storeColors[i]) {
-      console.log("incorrect");
-      startNewGame();
-    }
-  }
-  if (storePlayersMove.length == storeColors.length) {
-    getColor();
+function printColorClicked() {
+  if (storePlayersMove.length < storeColors.length && playersTurn == true) {
+    var pad = this;
+    var id = this.id;
+    storePlayersMove.push(id);
+    console.log("Color played : " + storePlayersMove);
+    this.classList.add(id + "-on");
+    var stop = setTimeout(function() {
+      pad.classList.remove(id + "-on")
+    }, 300);
+    index = storePlayersMove.length - 1;
+    console.log("Index = " + index);
+    checkColor(index);
   }
 }
+
 
 function playColor(color) {
   var pad = document.getElementById(color);
@@ -109,7 +119,7 @@ function playColor(color) {
   pad.classList.add(id + "-on");
   var stop = setTimeout(function() {
     pad.classList.remove(id + "-on");
-  }, 1000);
+  }, 500);
 }
 
 function playStoredColors(arr) {
@@ -119,17 +129,46 @@ function playStoredColors(arr) {
     playColor(arr[i]);
     i++;
     if (i < arr.length) {
-      setTimeout(print, 2000);
+      setTimeout(print, 1000);
+    } else {
+      setTimeout(function() {
+        playersTurn = true;
+      }, 500)
     }
   }
   print();
 }
 
-function checkColor() {
-  for (var i = 0; i < storeColors.length; i++) {
-    if (storeColors[i] !== storePlayersMove[i]) {
-      return false;
+function checkColor(idx) {
+  if (storeColors[idx] !== storePlayersMove[idx]) {
+    console.log("incorrect");
+    if (strictMode == true) {
+      printError();
+      startNewGame();
+    } else {
+      var delay = setTimeout(function() {
+        playStoredColors(storeColors);
+        storePlayersMove = [];
+      }, 1500)
+      clickColor();
     }
-  }
-  return true;
+
+  } else if (storeColors.length == storePlayersMove.length) {
+    storePlayersMove = [];
+    getColor();
+  } else clickColor();
+}
+
+function printError() {
+  var times = 0;
+  screen.style.vivibility = "hidden";
+  screen.innerHTML = "!!";
+  var blink = setInterval(function() {
+    times++;
+    if (times === 4) {
+      clearInterval(blink);
+      screen.innerHTML = "--";
+    }
+    screen.style.visibility = (screen.style.visibility === "hidden" ? "" : "hidden");
+  }, 100);
 }
