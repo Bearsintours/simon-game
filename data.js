@@ -107,7 +107,6 @@ function printColorClicked() {
       pad.classList.remove(id + "-on")
     }, 300);
     index = storePlayersMove.length - 1;
-    console.log("Index = " + index);
     checkColor(index);
   }
 }
@@ -141,34 +140,37 @@ function playStoredColors(arr) {
 
 function checkColor(idx) {
   if (storeColors[idx] !== storePlayersMove[idx]) {
-    console.log("incorrect");
     if (strictMode == true) {
-      printError();
-      startNewGame();
+      printMessage("!!");
+      setTimeout(startNewGame, 1000);
     } else {
+      printMessage("!!");
       var delay = setTimeout(function() {
+        screen.innerHTML = score;
         playStoredColors(storeColors);
         storePlayersMove = [];
-      }, 1500)
+      }, 2000)
       clickColor();
     }
-
   } else if (storeColors.length == storePlayersMove.length) {
-    storePlayersMove = [];
-    getColor();
+    if (score == 20) {
+      printMessage("WIN");
+    } else {
+      storePlayersMove = [];
+      getColor();
+    }
   } else clickColor();
 }
 
-function printError() {
+function printMessage(message) {
   var times = 0;
   screen.style.vivibility = "hidden";
-  screen.innerHTML = "!!";
+  screen.innerHTML = message;
   var blink = setInterval(function() {
     times++;
     if (times === 4) {
       clearInterval(blink);
-      screen.innerHTML = "--";
     }
     screen.style.visibility = (screen.style.visibility === "hidden" ? "" : "hidden");
-  }, 100);
+  }, 200);
 }
