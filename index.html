@@ -3,11 +3,9 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="data.js">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
   <title>Simon game</title>
 </head>
 
@@ -15,12 +13,12 @@
   <div class="container">
     <div id="game">
       <div class="top-row row">
-        <div id="green-pad" class="pad"></div>
-        <div id="red-pad" class="pad"></div>
+        <div id="green" class="pads"></div>
+        <div id="red" class="pads"></div>
       </div>
       <div class="bottom-row row">
-        <div id="yellow-pad" class="pad"></div>
-        <div id="blue-pad" class="pad"></div>
+        <div id="yellow" class="pads"></div>
+        <div id="blue" class="pads"></div>
       </div>
       <div id="controls">
         <h1>Simon <span>&copy</span></h1>
@@ -49,6 +47,15 @@
       </div>
     </div>
   </div>
+  <audio id="green-audio" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="red-audio" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="yellow-audio" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="blue-audio" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" type="audio/mpeg">
+  </audio>
+  <script src="./data.js"></script>
 </body>
 
 </html>
