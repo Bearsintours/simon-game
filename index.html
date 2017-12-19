@@ -10,40 +10,38 @@
 </head>
 
 <body>
-  <div class="container">
-    <div id="game">
-      <div class="top-row row">
-        <div id="green" class="pads"></div>
-        <div id="red" class="pads"></div>
-      </div>
-      <div class="bottom-row row">
-        <div id="yellow" class="pads"></div>
-        <div id="blue" class="pads"></div>
-      </div>
-      <div id="controls">
-        <h1>Simon <span>&copy</span></h1>
-        <div id="buttons">
-          <div id="count" class="aligned">
-            <div id="screen" class="hidden">--</div>
-          </div>
-          <div id="start" class="aligned btn">
-            <div id="start-btn"></div>
-            <div class="label">START</div>
-          </div>
-          <div id="mode" class="aligned btn">
-            <div id="led"></div>
-            <div id="mode-btn"></div>
-            <div class="label">STRICT</div>
-          </div>
+  <div id="game">
+    <div class="row">
+      <div id="green" class="pads"></div>
+      <div id="red" class="pads"></div>
+    </div>
+    <div class="row">
+      <div id="yellow" class="pads"></div>
+      <div id="blue" class="pads"></div>
+    </div>
+    <div id="controls">
+      <h1>Simon <span>&copy</span></h1>
+      <div id="buttons">
+        <div id="count" class="aligned">
+          <div id="screen" class="hidden">--</div>
         </div>
-        <div id="toggle">
-          <h5>OFF</h5>
-          <label class="switch-btn">
-            <input type="checkbox" id="on-off-btn">
-            <div class="slide"></div>
-          </label>
-          <h5>ON</h5>
+        <div id="start" class="aligned btn">
+          <div id="start-btn"></div>
+          <div class="label">START</div>
         </div>
+        <div id="mode" class="aligned btn">
+          <div id="led"></div>
+          <div id="mode-btn"></div>
+          <div class="label">STRICT</div>
+        </div>
+      </div>
+      <div id="toggle">
+        <h5>OFF</h5>
+        <label class="switch-btn">
+          <input type="checkbox" id="on-off-btn">
+          <div class="slide"></div>
+        </label>
+        <h5>ON</h5>
       </div>
     </div>
   </div>
@@ -55,7 +53,6 @@
   </audio>
   <audio id="blue-audio" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" type="audio/mpeg">
   </audio>
-  <script src="./data.js"></script>
 </body>
 
 </html>
