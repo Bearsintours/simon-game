@@ -2,21 +2,13 @@ body {
   background-image: url("https://images-na.ssl-images-amazon.com/images/I/91g1AMsf4ZL._SL1500_.jpg");
 }
 
-.container {
-  position: relative;
-  text-align: center;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
 #game {
   position: relative;
   margin: auto;
+  text-align: center;
   top: 30px;
   border: 1px solid black;
-  border-radius: 50%;
+  border-radius: 100%;
   background-color: rgb(50, 50, 50);
   width: 600px;
   height: 600px;
@@ -24,20 +16,23 @@ body {
 }
 
 .row {
-  display: inline-flex;
+  position: relative;
+  display: inline-block;
+  top: -15px;
 }
 
 .pads {
   position: relative;
-  width: 260px;
-  height: 260px;
+  width: 290px;
+  height: 290px;
+  margin: 10px;
+  border: 10px solid rgb(50, 50, 50);
 }
 
 #green {
   border-top-left-radius: 100%;
   background-color: rgba(20, 205, 20, 0.8);
-  top: 30px;
-  right: 8px;
+  top: 20px;
 }
 
 .green-on {
@@ -45,10 +40,8 @@ body {
 }
 
 #red {
-  border-top-right-radius: 100%;
+  border-bottom-left-radius: 100%;
   background-color: rgba(200, 0, 0, 0.9);
-  top: 30px;
-  left: 8px;
 }
 
 .red-on {
@@ -58,8 +51,6 @@ body {
 #blue {
   border-bottom-right-radius: 100%;
   background-color: rgba(0, 0, 225, 0.8);
-  top: 40px;
-  left: 8px;
 }
 
 .blue-on {
@@ -67,11 +58,10 @@ body {
 }
 
 #yellow {
-  border-bottom-left-radius: 100%;
+  border-top-right-radius: 100%;
   background-color: rgba(235, 235, 0, 0.8);
-  right: 8px;
-  top: 40px;
   opacity: 0.8;
+  top: 20px;
 }
 
 .yellow-on {
@@ -85,7 +75,6 @@ body {
   right: 0;
   position: absolute;
   border: 20px solid rgb(50, 50, 50);
-  ;
   border-radius: 50%;
   height: 300px;
   width: 300px;
@@ -104,6 +93,7 @@ body {
 #controls h1 span {
   position: absolute;
   font-size: .4em;
+  right: 15%;
 }
 
 #buttons {
@@ -231,11 +221,18 @@ input:checked+.slide:before {
   #game {
     top: -30px;
     transform: scale(0.8);
-    margin-left: -40px;
   }
 }
 
 @media only screen and (max-width: 600px) {
+  #game {
+    top: -100px;
+    transform: scale(0.6);
+    margin-left: -70px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
   #game {
     top: -100px;
     transform: scale(0.5);
