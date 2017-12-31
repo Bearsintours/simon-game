@@ -76,7 +76,7 @@
     score = 0;
   }
 
-
+  // computer plays
   function getColor() {
     playersTurn = false;
     computersTurn = true;
@@ -94,6 +94,7 @@
     clickColor();
   }
 
+  // change color and play audio
   function playColor(color) {
     if (on) {
       var pad = document.getElementById(color);
@@ -107,6 +108,7 @@
     }
   }
 
+  // play all colors stored with interval
   function playStoredColors(arr) {
     var i = 0;
 
@@ -148,6 +150,7 @@
     }
   }
 
+  // compare computer and player moves and check for error or win
   function checkColor(idx) {
     if (storeColors[idx] !== storePlayersMove[idx]) {
       if (strictMode) {
