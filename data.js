@@ -133,6 +133,7 @@
     }
   }
 
+  // change color and play audio
   function printColorClicked() {
     if (storePlayersMove.length < storeColors.length && playersTurn && on) {
       var pad = this;
@@ -175,6 +176,7 @@
     } else clickColor();
   }
 
+  // print message on screen
   function printMessage(message) {
     var times = 0;
     screen.style.vivibility = "hidden";
