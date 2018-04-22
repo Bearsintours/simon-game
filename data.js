@@ -1,6 +1,6 @@
 (function () {
 
-  // Global variables
+  /** GLOBAL VARIABLES **/
 
   var screen = document.getElementById("screen");
   var switchBtn = document.getElementById("on-off-btn");
@@ -26,12 +26,12 @@
   var index, sound;
 
 
-  // Event listeners
+  /** EVENT LISTENERS **/
 
   switchBtn.addEventListener("click", function () {
     screen.innerHTML = "--";
     screen.classList.toggle("hidden");
-    if (on == true) {
+    if (on) {
       on = false;
       strictMode = false;
       strictModeLed.classList.remove("led-on");
@@ -61,22 +61,26 @@
     }
   })
 
+  /** GAME **/
 
-  // Helper functions
-
+  // Start game
   function startNewGame() {
     reset();
     printMessage("0");
     setTimeout(getColor, 1000);
   }
 
+  // Reset game
   function reset() {
     storeColors = [];
     storePlayersMove = [];
     score = 0;
   }
 
-  // computer plays
+
+/** HELPER FUNCTIONS **/
+
+  // Computer plays
   function getColor() {
     playersTurn = false;
     computersTurn = true;
@@ -85,7 +89,7 @@
     var pad = document.getElementById(color);
     var id = pad.id;
     storeColors.push(id);
-    console.log("Colors to play: " + storeColors);
+    console.log("Colors to play: ", storeColors);
     score++;
     var delay = setTimeout(function () {
       playStoredColors(storeColors);
@@ -94,7 +98,7 @@
     clickColor();
   }
 
-  // change color and play audio
+  // Change color and play audio
   function playColor(color) {
     if (on) {
       var pad = document.getElementById(color);
@@ -108,7 +112,7 @@
     }
   }
 
-  // play all colors stored with interval
+  // Play moves with interval
   function playStoredColors(arr) {
     var i = 0;
 
@@ -133,14 +137,14 @@
     }
   }
 
-  // change color and play audio
+  // Flash color and play audio
   function printColorClicked() {
     if (storePlayersMove.length < storeColors.length && playersTurn && on) {
       var pad = this;
       var id = this.id;
       sound = document.getElementById(id + "-audio");
       storePlayersMove.push(id);
-      console.log("Color played : " + storePlayersMove);
+      console.log("Color played : ", storePlayersMove);
       this.classList.add(id + "-on");
       sound.play();
       var stop = setTimeout(function () {
@@ -151,7 +155,7 @@
     }
   }
 
-  // compare computer and player moves and check for error or win
+  // Compare computer and player moves and check for error or win
   function checkColor(idx) {
     if (storeColors[idx] !== storePlayersMove[idx]) {
       if (strictMode) {
@@ -176,7 +180,7 @@
     } else clickColor();
   }
 
-  // print message on screen
+  // Print message on screen
   function printMessage(message) {
     var times = 0;
     screen.style.vivibility = "hidden";

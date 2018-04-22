@@ -20,4 +20,11 @@
 
 - [x] I can win the game by getting a series of 20 steps correct. I am notified of my victory, then the game starts over.
 
+
+#### Improvements:
+
+- [] Implement async/await instead of setTimeOut() to control flow
+- [] ES6 syntax
+
+
 #### Live version : https://codepen.io/Bearsintours/full/eyJwRJ/
