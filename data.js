@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
   // Global variables
 
@@ -28,7 +28,7 @@
 
   // Event listeners
 
-  switchBtn.addEventListener("click", function() {
+  switchBtn.addEventListener("click", function () {
     screen.innerHTML = "--";
     screen.classList.toggle("hidden");
     if (on == true) {
@@ -44,7 +44,7 @@
     }
   });
 
-  strictModeBtn.addEventListener("click", function() {
+  strictModeBtn.addEventListener("click", function () {
     if (on) {
       strictModeLed.classList.toggle("led-on");
       if (strictMode) {
@@ -55,7 +55,7 @@
     }
   })
 
-  startBtn.addEventListener("click", function() {
+  startBtn.addEventListener("click", function () {
     if (on && !computersTurn) {
       startNewGame();
     }
@@ -87,7 +87,7 @@
     storeColors.push(id);
     console.log("Colors to play: " + storeColors);
     score++;
-    var delay = setTimeout(function() {
+    var delay = setTimeout(function () {
       playStoredColors(storeColors);
       screen.innerHTML = score;
     }, 1200)
@@ -102,7 +102,7 @@
       sound = document.getElementById(id + "-audio");
       pad.classList.add(id + "-on");
       sound.play();
-      var stop = setTimeout(function() {
+      var stop = setTimeout(function () {
         pad.classList.remove(id + "-on");
       }, 500);
     }
@@ -118,7 +118,7 @@
       if (i < arr.length) {
         setTimeout(print, 1000);
       } else {
-        setTimeout(function() {
+        setTimeout(function () {
           playersTurn = true;
           computersTurn = false;
         }, 500)
@@ -143,7 +143,7 @@
       console.log("Color played : " + storePlayersMove);
       this.classList.add(id + "-on");
       sound.play();
-      var stop = setTimeout(function() {
+      var stop = setTimeout(function () {
         pad.classList.remove(id + "-on")
       }, 300);
       index = storePlayersMove.length - 1;
@@ -159,7 +159,7 @@
         setTimeout(startNewGame, 1000);
       } else {
         printMessage("!!");
-        var delay = setTimeout(function() {
+        var delay = setTimeout(function () {
           screen.innerHTML = score;
           playStoredColors(storeColors);
           storePlayersMove = [];
@@ -181,7 +181,7 @@
     var times = 0;
     screen.style.vivibility = "hidden";
     screen.innerHTML = message;
-    var blink = setInterval(function() {
+    var blink = setInterval(function () {
       times++;
       if (times === 4) {
         clearInterval(blink);

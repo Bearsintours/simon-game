@@ -108,7 +108,7 @@ body {
 }
 
 #count {
-  overflow:hidden;
+  overflow: hidden;
   border: 1px solid black;
   height: 3em;
   width: 3em;
@@ -129,8 +129,8 @@ body {
   visibility: hidden;
 }
 
-#start{
-  margin-right:10%;
+#start {
+  margin-right: 10%;
 }
 
 #start-btn {
@@ -146,13 +146,13 @@ body {
 }
 
 #led {
-  position:relative;
+  position: relative;
   height: .5em;
   width: .5em;
   border: 1px solid black;
   border-radius: 100%;
   background-color: black;
-  left:60%;
+  left: 60%;
 }
 
 .led-on {
@@ -171,8 +171,8 @@ body {
   -web-kit-box-shadow: 0px 2px 3px #222;
 }
 
-p{
-  margin-left:-25%;
+p {
+  margin-left: -25%;
 }
 
 #toggle {
@@ -233,7 +233,7 @@ input:checked+.slide:before {
   #game {
     top: -100px;
     transform: scale(0.6);
-    margin-left: -70px;
+    margin-left: -50px;
   }
 }
 
@@ -241,6 +241,6 @@ input:checked+.slide:before {
   #game {
     top: -100px;
     transform: scale(0.5);
-    margin-left: -140px;
+    margin-left: -100px;
   }
 }
